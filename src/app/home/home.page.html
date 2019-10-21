@@ -10,16 +10,31 @@
 </ion-header>
 
 <ion-content>
+		<!-- Beer of the month -->
     <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" class="img_left"/>
+      <img [src]="botm.img" alt="" class="img_left"/>
       <ion-card-header class="card_header">
         <ion-card-subtitle>Beer of the month</ion-card-subtitle>
         <ion-card-title>{{botm.name}}</ion-card-title>
-        <!-- <ion-card-title>Name</ion-card-title> -->
       </ion-card-header>
       <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+				<p>Alcohol : {{botm.alcohol}}%</p>
+				<p>250 ml : ${{botm.price_250}} | 500 ml : ${{botm.price_500}}</p>
+        <p>{{botm.description}}</p>
       </ion-card-content>
     </ion-card>
+
+		<!-- Next event -->
+		<ion-card class="welcome-card">
+      <img [src]="nextEve.img" alt="" class="img_left"/>
+      <ion-card-header class="card_header">
+        <ion-card-subtitle>Next Event</ion-card-subtitle>
+        <ion-card-title>{{nextEve.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{nextEve.description}}</p>
+      </ion-card-content>
+    </ion-card>
+
 
 </ion-content>
