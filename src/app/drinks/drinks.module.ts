@@ -22,8 +22,35 @@ const routes: Routes = [
 				]
 			},
 			{
+				path: 'cocktails',
+				children: [
+					{
+						path: '',
+						loadChildren: './cocktails/cocktails.module#CocktailsPageModule'
+					}
+				]
+			},
+			{
+				path: 'shots',
+				children: [
+					{
+						path: '',
+						loadChildren: './shots/shots.module#ShotsPageModule'
+					}
+				]
+			},
+			{
+				path: 'virgins',
+				children: [
+					{
+						path: '',
+						loadChildren: './virgins/virgins.module#VirginsPageModule'
+					}
+				]
+			},
+			{
 				path: '',
-				redirectTo: 'app/drinks/beers',
+				redirectTo: 'beers',
 				pathMatch: 'full'
 			}
 		]

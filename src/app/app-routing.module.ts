@@ -20,26 +20,6 @@ const routes: Routes = [
 		path: 'drinks',
 		loadChildren: './drinks/drinks.module#DrinksPageModule'
 	}
-  // {
-	// 	path: 'drinks',
-	// 	component: DrinksPage,
-	// 	children: [
-	// 		{
-	// 			path: 'beers',
-	// 			children: [
-	// 				{
-	// 					path: '',
-	// 					loadChildren: '../beers/beers.module#BeersModule'
-	// 				}
-	// 			]
-	// 		},
-	// 		{
-	// 			path: '',
-	// 			redirectTo: 'app/drinks/beers',
-	// 			pathMatch: 'full'
-	// 		}
-	// 	]
-	// }
 ];
 
 @NgModule({
