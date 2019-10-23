@@ -38,31 +38,29 @@ export class EventsPage implements OnInit {
 	sortEvents(events) {
 		var oldTab = events;
 		var newTab = [];
-		var nextEvent = oldTab[0];
 		console.log(oldTab);
 		// console.log(nextEvent);
 		var compteur = 0;
 		while (oldTab.length > 0 && compteur < 3) {
-			for(let i = 0; i < oldTab.length; i++) {
+			var nextEvent = oldTab[0];
+			for(let i = 1; i < oldTab.length; i++) {
+				var dateNextEvent = new Date(nextEvent.date.slice(6), nextEvent.date.slice(3,5)-1, nextEvent.date.slice(0,2));
 				var dateCompared = new Date(oldTab[i].date.slice(6), oldTab[i].date.slice(3,5)-1, oldTab[i].date.slice(0,2));
-				if (i == 0)
-					var dateNextEvent = new Date(2000, 0, 1);
-				else
-					var dateNextEvent = new Date(nextEvent.date.slice(6), nextEvent.date.slice(3,5)-1, nextEvent.date.slice(0,2));
-
 				console.log(dateNextEvent);
 				console.log(dateCompared);
-				if (dateCompared >= dateNextEvent) {
+				if (dateCompared < dateNextEvent) {
+					console.log("Next event");
+					console.log("nextEvent");
 					nextEvent = oldTab[i];
-					newTab.push(nextEvent);
-					oldTab.splice(1, i);
-					console.log("Next Event");
-					console.log(nextEvent);
-					console.log(newTab);
-					console.log(oldTab);
-					// i = 0;
 				}
 			}
+			newTab.push(nextEvent);
+			console.log(oldTab.indexOf(nextEvent));
+			oldTab.splice(1, oldTab.indexOf(nextEvent));
+			console.log("Next Event Winning");
+			console.log(nextEvent);
+			// console.log(newTab);
+			console.log(oldTab);
 			compteur++;
 		}
 		return newTab;
