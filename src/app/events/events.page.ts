@@ -41,7 +41,7 @@ export class EventsPage implements OnInit {
 		console.log(oldTab);
 		// console.log(nextEvent);
 		var compteur = 0;
-		while (oldTab.length > 0 && compteur < 3) {
+		while (oldTab.length > 0 && compteur < 5) {
 			var nextEvent = oldTab[0];
 			for(let i = 1; i < oldTab.length; i++) {
 				var dateNextEvent = new Date(nextEvent.date.slice(6), nextEvent.date.slice(3,5)-1, nextEvent.date.slice(0,2));
@@ -49,14 +49,14 @@ export class EventsPage implements OnInit {
 				console.log(dateNextEvent);
 				console.log(dateCompared);
 				if (dateCompared < dateNextEvent) {
-					console.log("Next event");
-					console.log("nextEvent");
 					nextEvent = oldTab[i];
+					console.log("Next event");
+					console.log(nextEvent);
 				}
 			}
 			newTab.push(nextEvent);
 			console.log(oldTab.indexOf(nextEvent));
-			oldTab.splice(1, oldTab.indexOf(nextEvent));
+			oldTab.splice(oldTab.indexOf(nextEvent), 1);
 			console.log("Next Event Winning");
 			console.log(nextEvent);
 			// console.log(newTab);
