@@ -19,7 +19,8 @@ const routes: Routes = [
 	{
 		path: 'drinks',
 		loadChildren: './drinks/drinks.module#DrinksPageModule'
-	}
+	},
+  { path: 'events', loadChildren: './events/events.module#EventsPageModule' }
 ];
 
 @NgModule({

@@ -21,7 +21,12 @@ export class AppComponent {
       title: 'Drinks',
       url: '/drinks',
       icon: 'beer'
-    }
+    },
+		{
+			title: "Events",
+			url: "/events",
+			icon: "calendar"
+		}
   ];
 
   constructor(
