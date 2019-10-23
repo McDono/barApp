@@ -27,22 +27,59 @@ export class EventsPage implements OnInit {
 		this.ref = firebase.database().ref("events");
 		// this.ref.push(this.events[0]); //create a new event into the database
 		this.ref.on("value", resp => {
+			console.log(resp);
 			this.events = [];
 			this.events = snapshotToArray(resp);
-			console.log(this.events)
+			// console.log(this.events);
+			this.events = this.sortEvents(this.events)
 		});
+	}
+
+	sortEvents(events) {
+		var oldTab = events;
+		var newTab = [];
+		var nextEvent = oldTab[0];
+		console.log(oldTab);
+		// console.log(nextEvent);
+		var compteur = 0;
+		while (oldTab.length > 0 && compteur < 3) {
+			for(let i = 0; i < oldTab.length; i++) {
+				var dateCompared = new Date(oldTab[i].date.slice(6), oldTab[i].date.slice(3,5)-1, oldTab[i].date.slice(0,2));
+				if (i == 0)
+					var dateNextEvent = new Date(2000, 0, 1);
+				else
+					var dateNextEvent = new Date(nextEvent.date.slice(6), nextEvent.date.slice(3,5)-1, nextEvent.date.slice(0,2));
+
+				console.log(dateNextEvent);
+				console.log(dateCompared);
+				if (dateCompared >= dateNextEvent) {
+					nextEvent = oldTab[i];
+					newTab.push(nextEvent);
+					oldTab.splice(1, i);
+					console.log("Next Event");
+					console.log(nextEvent);
+					console.log(newTab);
+					console.log(oldTab);
+					// i = 0;
+				}
+			}
+			compteur++;
+		}
+		return newTab;
+
 	}
 
 }
 
 export const snapshotToArray = snapshot => {
-	console.log(snapshot)
+	// console.log(snapshot)
 	let returnArr = [];
 	snapshot.forEach(childSnapshot => {
 		let item = childSnapshot.val();
-		console.log(item);
+		// console.log(item);
 		item.key = childSnapshot.key;
 		returnArr.push(item);
 	});
+	// console.log(returnArr);
 	return returnArr;
 };
