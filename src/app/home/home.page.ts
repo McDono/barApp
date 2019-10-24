@@ -43,15 +43,45 @@ export class HomePage {
 	}
 
 	getNextEvent() {
-		this.ref = firebase.database().ref("next_event");
+		this.ref = firebase.database().ref("events");
 		// this.ref.push(this.nextEve); //create a new beer of the month into the database
 		this.ref.on("value", resp => {
-			resp.forEach(childSnapshot => {
-				let item = childSnapshot.val();
-				console.log(item);
-				this.nextEve = item;
-			});
+			var events = [];
+			events = snapshotToArray(resp);
+			events = this.sortEvents(events)
+			this.nextEve = events[0];
 		});
 	}
 
+	sortEvents(events) {
+		var oldTab = events;
+		var newTab = [];
+		while (oldTab.length > 0) {
+			var nextEvent = oldTab[0];
+			for(let i = 1; i < oldTab.length; i++) {
+				var dateNextEvent = new Date(nextEvent.date.slice(6), nextEvent.date.slice(3,5)-1, nextEvent.date.slice(0,2));
+				var dateCompared = new Date(oldTab[i].date.slice(6), oldTab[i].date.slice(3,5)-1, oldTab[i].date.slice(0,2));
+				if (dateCompared < dateNextEvent) {
+					nextEvent = oldTab[i];
+				}
+			}
+			newTab.push(nextEvent);
+			oldTab.splice(oldTab.indexOf(nextEvent), 1);
+		}
+		return newTab;
+	}
+
 }
+
+export const snapshotToArray = snapshot => {
+	// console.log(snapshot)
+	let returnArr = [];
+	snapshot.forEach(childSnapshot => {
+		let item = childSnapshot.val();
+		// console.log(item);
+		item.key = childSnapshot.key;
+		returnArr.push(item);
+	});
+	// console.log(returnArr);
+	return returnArr;
+};

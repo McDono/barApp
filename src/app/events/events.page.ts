@@ -51,7 +51,6 @@ export class EventsPage implements OnInit {
 			oldTab.splice(oldTab.indexOf(nextEvent), 1);
 		}
 		return newTab;
-
 	}
 
 }
