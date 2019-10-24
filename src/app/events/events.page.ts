@@ -38,30 +38,17 @@ export class EventsPage implements OnInit {
 	sortEvents(events) {
 		var oldTab = events;
 		var newTab = [];
-		console.log(oldTab);
-		// console.log(nextEvent);
-		var compteur = 0;
-		while (oldTab.length > 0 && compteur < 5) {
+		while (oldTab.length > 0) {
 			var nextEvent = oldTab[0];
 			for(let i = 1; i < oldTab.length; i++) {
 				var dateNextEvent = new Date(nextEvent.date.slice(6), nextEvent.date.slice(3,5)-1, nextEvent.date.slice(0,2));
 				var dateCompared = new Date(oldTab[i].date.slice(6), oldTab[i].date.slice(3,5)-1, oldTab[i].date.slice(0,2));
-				console.log(dateNextEvent);
-				console.log(dateCompared);
 				if (dateCompared < dateNextEvent) {
 					nextEvent = oldTab[i];
-					console.log("Next event");
-					console.log(nextEvent);
 				}
 			}
 			newTab.push(nextEvent);
-			console.log(oldTab.indexOf(nextEvent));
 			oldTab.splice(oldTab.indexOf(nextEvent), 1);
-			console.log("Next Event Winning");
-			console.log(nextEvent);
-			// console.log(newTab);
-			console.log(oldTab);
-			compteur++;
 		}
 		return newTab;
 
