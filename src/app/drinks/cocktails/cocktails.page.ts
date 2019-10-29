@@ -25,7 +25,7 @@ export class CocktailsPage implements OnInit {
 
 	getCocktails() {
 		this.ref = firebase.database().ref("drinks/cocktails");
-		// this.ref.push(this.cocktails[0]); //create a new cocktail into the database
+		this.ref.push(this.cocktails[0]); //create a new cocktail into the database
 		this.ref.on("value", resp => {
 			this.cocktails = [];
 			this.cocktails = snapshotToArray(resp);
