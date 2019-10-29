@@ -4,21 +4,32 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      {{"HOME" | translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+		<ion-list>
+			<ion-item>
+				<ion-label>Select Language</ion-label>
+				<ion-select placeholder="Select One" [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+					<ion-select-option value="en">English</ion-select-option>
+					<ion-select-option value="fr">French</ion-select-option>
+				</ion-select>
+			</ion-item>
+		</ion-list>
+
 		<!-- Beer of the month -->
     <ion-card class="welcome-card">
       <img [src]="botm.img" alt="" class="img_left"/>
       <ion-card-header class="card_header">
-        <ion-card-subtitle>Beer of the month</ion-card-subtitle>
+        <ion-card-subtitle>{{"BOTM" | translate}}</ion-card-subtitle>
         <ion-card-title>{{botm.name}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-				<p>Alcohol : {{botm.alcohol}}%</p>
+				<p>{{'ALCOHOL' | translate}} : {{botm.alcohol}}%</p>
 				<p>250 ml : ${{botm.price_250}} | 500 ml : ${{botm.price_500}}</p>
         <p>{{botm.description}}</p>
       </ion-card-content>
@@ -28,7 +39,7 @@
 		<ion-card class="welcome-card">
       <img [src]="nextEve.img" alt="" class="img_left"/>
       <ion-card-header class="card_header">
-        <ion-card-subtitle>Next Event</ion-card-subtitle>
+        <ion-card-subtitle>{{"NEXTEVE"|translate}}</ion-card-subtitle>
         <ion-card-title>{{nextEve.name}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
@@ -36,6 +47,8 @@
         <p>{{nextEve.description}}</p>
       </ion-card-content>
     </ion-card>
+
+
 
 
 </ion-content>

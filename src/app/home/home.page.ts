@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
+import { TranslateConfigService } from '../services/translate-config.service';
 
 @Component({
   selector: 'app-home',
@@ -24,10 +25,12 @@ export class HomePage {
 		description: "Enter even description here",
 		img: "nop"
 	}
+	selectedLanguage:string;
 
-  constructor() {
+  constructor(private translateConfigService: TranslateConfigService) {
 		this.getBeerOfTheMonth();
 		this.getNextEvent();
+		this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
 	}
 
 	getBeerOfTheMonth() {
@@ -70,6 +73,10 @@ export class HomePage {
 		}
 		return newTab;
 	}
+
+	languageChanged(){
+    this.translateConfigService.setLanguage(this.selectedLanguage);
+  }
 
 }
 
