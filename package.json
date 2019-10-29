@@ -1,8 +1,8 @@
 {
-  "name": "barApp",
+  "name": "White Rabbit",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Donovan Groschang",
+  "homepage": "",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
