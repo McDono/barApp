@@ -23,7 +23,7 @@ export class BeersPage implements OnInit {
 
 	getBeers() {
 		this.ref = firebase.database().ref("drinks/beers");
-		// this.ref.push(this.beers[0]); //create a new beer of the month into the database
+		// this.ref.push(this.beers[0]); //create a new beer into the database
 		this.ref.on("value", resp => {
 			this.beers = [];
 			this.beers = snapshotToArray(resp);
