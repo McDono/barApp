@@ -6,7 +6,7 @@
     <ion-title>
       {{"HOME" | translate}}
     </ion-title>
-		<ion-title >
+		<ion-title *ngIf="userService.signedIn == true">
 			Admin
 		</ion-title>
 		<!-- <ion-button slot="end" (click)="newExpense()" *ngIf="userService.signedIn == true">

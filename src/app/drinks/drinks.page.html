@@ -3,6 +3,9 @@
 		<ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+		<ion-button slot="end" (click)="newDrink()" *ngIf="userService.signedIn == true">
+			<ion-icon slot="icon-only" name="add"></ion-icon>
+		</ion-button>
     <ion-title>Drinks</ion-title>
   </ion-toolbar>
 </ion-header>

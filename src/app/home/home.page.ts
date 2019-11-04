@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as firebase from 'firebase';
 import { TranslateConfigService } from '../services/translate-config.service';
 import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',

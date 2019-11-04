@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-drinks',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DrinksPage implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService,
+							private router: Router) { }
 
   ngOnInit() {
   }
+
+	newDrink() {
+		this.router.navigateByUrl("/drink-new");
+	}
 
 }
