@@ -34,19 +34,6 @@ export class HomePage {
 		this.getNextEvent();
 		this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
 		console.log("this.userService.signedIn : " + this.userService.signedIn);
-
-
-		if (this.userService.signedIn == true) {
-			console.log("mark3");
-		}
-
-	}
-
-	ionViewWillEnter() {
-		if (this.userService.signedIn == true) {
-			console.log("mark4");
-		}
-
 	}
 
 	getBeerOfTheMonth() {

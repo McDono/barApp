@@ -24,11 +24,7 @@ export class DrinkNewPage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-		// this.newAlcohol = {
-		// 	type: "",
-		// 	alcohol: 0,
-		// 	show: false
-		// };
+
   }
 
 	ionViewWillEnter() {
