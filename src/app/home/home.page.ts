@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
 import { TranslateConfigService } from '../services/translate-config.service';
-
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -27,7 +27,8 @@ export class HomePage {
 	}
 	selectedLanguage:string;
 
-  constructor(private translateConfigService: TranslateConfigService) {
+  constructor(private translateConfigService: TranslateConfigService,
+	private userService: UserService) {
 		this.getBeerOfTheMonth();
 		this.getNextEvent();
 		this.selectedLanguage = this.translateConfigService.getDefaultLanguage();

@@ -20,7 +20,8 @@ const routes: Routes = [
 		path: 'drinks',
 		loadChildren: './drinks/drinks.module#DrinksPageModule'
 	},
-  { path: 'events', loadChildren: './events/events.module#EventsPageModule' }
+  { path: 'events', loadChildren: './events/events.module#EventsPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
 ];
 
 @NgModule({
