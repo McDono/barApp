@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from 'firebase/app';
 import { UserService } from './services/user.service';
+import { TranslateConfigService } from './services/translate-config.service';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +15,22 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Home',
+      title: 'HOME',
       url: '/home',
       icon: 'home'
     },
     {
-      title: 'Drinks',
+      title: 'DRINKS',
       url: '/drinks',
       icon: 'beer'
     },
 		{
-			title: "Events",
+			title: "EVENTS",
 			url: "/events",
 			icon: "calendar"
 		},
 		{
-			title: "Log in",
+			title: "LOGIN",
 			url: "/login",
 			icon: "contact"
 		},
@@ -40,6 +41,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
 		private menu: MenuController,
+		private translateConfigService: TranslateConfigService
   ) {
     this.initializeApp();
   }
