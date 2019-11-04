@@ -19,7 +19,6 @@ export class LoginPage implements OnInit {
 	}
 
 	doLogin() {
-		console.log("mark2")
 		if((this.account.email != "") && (this.account.password != "")) {
 			this.userService.signin(this.account.email, this.account.password)
 				.then(data => {
