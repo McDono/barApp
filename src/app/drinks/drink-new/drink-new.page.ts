@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-drink-new',
@@ -20,14 +21,6 @@ export class DrinkNewPage implements OnInit {
 		price_500: 0,
 		beer_type: ""
 	};
-	newAlcohol = {
-		type: "",
-		alcohol: 0,
-		show: false
-	};
-	newVirgin = {
-		type: ""
-	};
 
   constructor(private router: Router) { }
 
@@ -36,6 +29,13 @@ export class DrinkNewPage implements OnInit {
   }
 
 	ionViewWillEnter() {
+		var form = document.querySelector("form");
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+			console.log("Form submitted");
+			this.addDrink()
+			this.router.navigateByUrl("/drinks/" + this.newDrink.type + "s");
+		});
 	}
 
 	drinkTypeSelected() {
@@ -44,6 +44,15 @@ export class DrinkNewPage implements OnInit {
 			this.newDrink.isAlcohol = false;
 		else
 			this.newDrink.isAlcohol = true;
+	}
+
+	addDrink() {
+		if(this.newDrink.type != "") {
+		var refLink = "drinks/" + this.newDrink.type + "s";
+		this.ref = firebase.database().ref(refLink);
+		this.ref.push(this.newDrink);
+	} else
+		console.log("Please select a drink type");
 	}
 
 
