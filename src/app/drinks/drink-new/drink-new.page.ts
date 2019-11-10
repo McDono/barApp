@@ -10,7 +10,15 @@ export class DrinkNewPage implements OnInit {
 
 	newDrink = {
 		type: "",
-		name: ""
+		name: "",
+		description: "",
+		img: "",
+		alcohol: 0,
+		isAlcohol: false,
+		price: 0,
+		price_250: 0,
+		price_500: 0,
+		beer_type: ""
 	};
 	newAlcohol = {
 		type: "",
@@ -32,16 +40,10 @@ export class DrinkNewPage implements OnInit {
 
 	drinkTypeSelected() {
 		console.log(this.newDrink.type);
-		if (this.newDrink.type == "virgin") {
-			this.newVirgin.type = this.newDrink.type;
-			this.newAlcohol.show = false;
-		}
-		else {
-			this.newAlcohol.type = this.newDrink.type;
-			this.newAlcohol.show = true;
-		}
-
-
+		if (this.newDrink.type == "virgin")
+			this.newDrink.isAlcohol = false;
+		else
+			this.newDrink.isAlcohol = true;
 	}
 
 
