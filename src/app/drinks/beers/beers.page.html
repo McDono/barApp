@@ -13,6 +13,9 @@
 				<p>Alcohol : {{beer.alcohol}}%</p>
 				<p>250 ml : ${{beer.price_250}} | 500 ml : ${{beer.price_500}}</p>
 				<p>{{beer.description}}</p>
+				<ion-button *ngIf="userService.signedIn" id="delete" color="danger" slot="end" (click)="presentDeleteAlert(beer)">
+					Delete
+				</ion-button>
 			</ion-card-content>
 		</ion-card>
 	</ion-item>

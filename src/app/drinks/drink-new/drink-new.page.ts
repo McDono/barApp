@@ -49,8 +49,8 @@ export class DrinkNewPage implements OnInit {
 	addDrink() {
 		if(this.newDrink.type != "") {
 		var refLink = "drinks/" + this.newDrink.type + "s";
-		this.ref = firebase.database().ref(refLink);
-		this.ref.push(this.newDrink);
+		var ref = firebase.database().ref(refLink);
+		ref.push(this.newDrink);
 	} else
 		console.log("Please select a drink type");
 	}

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import { Beer } from "./beers/Beer.js";
 import * as firebase from 'firebase';
+import { UserService } from '../../services/user.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-beers',
@@ -15,7 +17,8 @@ export class BeersPage implements OnInit {
 	);
 	public beers = [ this.beer0 ]
 
-  constructor() { }
+  constructor(private userService: UserService,
+							private alertController: AlertController) { }
 
   ngOnInit() {
 		this.getBeers();
@@ -30,6 +33,39 @@ export class BeersPage implements OnInit {
 			console.log(this.beers)
 		});
 	}
+
+	deleteDrink(drink) {
+		console.log(drink);
+		return firebase.database().ref("drinks/beers/" + drink.key).remove();
+		// console.log("Drinks deleted");
+	}
+
+	async presentDeleteAlert(drink) {
+		// var delete = false;
+	 const alert = await this.alertController.create({
+		 header: 'Deleting comfirmation',
+		 message: 'Are you sure to want to delete this drink <strong>definitively</strong> ?',
+		 buttons: [
+			 {
+				 text: "Cancel",
+				 role: "cancel",
+				 cssClass: "secondary",
+				 handler: () => {
+					 console.log("Delete request cancelled");
+				 }
+			 }, {
+				 text: "Delete",
+				 cssClass: "primary",
+				 handler: () => {
+					 // delete = true;
+					 this.deleteDrink(drink);
+				 }
+			 }
+		 ]
+	 });
+
+	 await alert.present();
+ }
 
 }
 

@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { TranslateConfigService } from '../services/translate-config.service';
 import { UserService } from '../services/user.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -80,6 +81,8 @@ export class HomePage {
 	languageChanged(){
     this.translateConfigService.setLanguage(this.selectedLanguage);
   }
+
+
 
 }
 
